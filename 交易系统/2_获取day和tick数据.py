@@ -11,6 +11,7 @@ import datetime
 import time
 #获取今日的日期
 today =  (time.strftime("%F"))
+
 #读取股票代码 myportfolio
 mp = pd.read_excel('data-protfolio/myportfolio.xlsx')
 mp.columns = ['name', 'stock', 'buy_date', 'buy_price', 'buy_amount', 'buy_value',
@@ -47,6 +48,26 @@ for i in ms:
     print(type(b))
 
 a= 568
+
+###############新测试
+
+mp.to_csv("data-protfolio/myportfolio.csv",encoding = "utf-8")
+
+mp = pd.read_csv('data-protfolio/myportfolio.csv',index_col =0)
+ms1=mp['stock']
+
+
+mp['stock'] = mp['stock'].map(lambda x : x.strip("'"))
+
+mp
+
+df['b']=df['b'].astype(str).str.zfill(4)
+
+mp['stock']=mp['stock'].astype(str).str.zfill(6)
+mp
+
+
+
 
 
 
