@@ -19,8 +19,6 @@ now = time.strftime('%Y-%m-%d_%H-%M',time.localtime(time.time()))
 
 engine = create_engine('mysql://root:@127.0.0.1/csrc?charset=utf8',echo = False)  # 定义引擎
 engine.execute('use csrc')
-
-
 conn = engine.connect()
 
 content = engine.execute('select content from bgczfkyj').fetchone()
@@ -54,7 +52,7 @@ df = df.set_index('index')
 
 df.title[0]
 df.content[0]
-df.set_index('index')
+
 
 
 document = doc()
@@ -62,7 +60,7 @@ document = doc()
 for i in range(0,496):
     document.add_heading(df.title[i],level=1)
     document.add_paragraph(df.content[i])
-#    document.add_page_break()
+    document.add_page_break()  #用sql自带换页，pd不带换页
     print(df.title[i])
 
 
